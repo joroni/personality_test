@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+  <html lang="en"  ng-app="quiz">
+  <head>
+    <meta charset="utf-8">
+    <title>NewBiz Bootstrap Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+  
+    <!-- Favicons 
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">-->
+  
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+  
+    <!-- Bootstrap CSS File -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  
+    <!-- Libraries CSS Files -->
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="lib/bootstrap-slider/css/bootstrap-slider.css" rel="stylesheet">  
+    <!-- Main Stylesheet File -->
+    <link href="css/style.css" rel="stylesheet">
+  <script src="lib/angularjs/1.6.9/angular.min.js"></script>
+  
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body ng-controller="quizCtrl" ng-init="initData()">
+<div class="container">
+
+<!--
+  
+    Two items can not share the same value.
+      <div ng-repeat="item2 in data2">
+        <span>
+          {{item2.name}}
+        </span>
+        <select ng-model="item2.value" ng-change="onChanged()" ng-options="choice for choice in possibleChoices">
+        </select>
+      </div>
+    -->
+
+    
+
+ <div class="jumbotron center flex-item">
+    <!--<h1 class="display-4">QUIZ APPLICATION</h1>-->
+    <p class="lead">{{questions.question}}</p>
+    <hr class="my-4">
+    <p class="lead">
+      <div class="navi">
+        <form id="{{QuestId}}" class="form-group" ng-model="selectedQuestion"  ng-repeat="option in questions.options">
+            <div class="row" ng-init="nodeQuestion($index);">
+              <label for="A-{{qid}}" class="text-left col-sm-8 col-form-label col-form-label-sm">{{option.text}}</label>
+              <div class="col-sm-3">
+
+              <!--
+                   <select name="A-{{qid}}" ng-model="selectedColumn" ng-change="selectColumn(selectedColumn);" ng-options="obj.value as obj.label for obj in priorities" ng-disabled="emptyArr">
+                  </select>
+                -->
+
+
+                <select name="A-{{qid}}" ng-model="selectedColumn" ng-change="selectColumn(selectedColumn);" ng-options="obj.value as obj.label for obj in priorities" ng-disabled="emptyArr">
+                </select>                <!-- <select name="A-{{qid}}" ng-model="selectedColumn" ng-change="selectColumn(selectedColumn);">
+                  <option ng-repeat="obj in priorities" ng-disabled="obj.value == selectedOption" ng-value="{{obj.value}}">
+                       {{obj.label}}
+                  </option>
+              </select>-->
+                
+              </div>
+              <div class="col-sm-1">
+                {{$index}}
+              </div>
+            </div>
+            
+             <!--   <div class="form-group">
+                 <label for="formControlRange">Example Range input</label>
+             <input type="range" min="1" max="4" value="0" class="form-control-range" id="formControlRange{{$index}}">
+              <input type="{{buttonType}}" ng-value="{{ratingVal}}" ng-checked="onChange({{$index}})">{{option.text}}</li>
+            </div>-->
+
+           
+           <!-- <div class="button">
+              <input type="button" value="previous" class="btn" ng-show="isPrevious" ng-click="previousQuestion()">
+              <input type="button" ng-model="selectedhead" value="ok" class="btn"  ng-click="turninAnswer('{{indexPoint}}');">
+              <input type="button" value="next" class="btn" ng-show="isNext" ng-click="nextQuestion()">
+            </div>
+         -->
+
+
+        </form>
+      </div>
+      <div class="button">
+        <input type="button" value="previous" class="btn btn-primary btn-lg " ng-show="isPrevious" ng-click="previousQuestion()">
+        <input type="button" value="next" class="btn btn-primary btn-lg" ng-show="isNext" ng-click="nextQuestion(); nodeQuestion(selectedQuestion);">
+      </div>
+    </p>
+  </div>
+ 
+<!--
+  <div class="question">
+    <h1>QUIZ APPLICATION</h1>
+    <h2>{{questions.question}}</h2>
+    <div class="navi">
+    <ul>
+      <li ng-repeat="option in questions.options" style="list-style:none">
+        <input type="{{buttonType}}" ng-value="{{ratingVal}}" ng-checked="onChange({{$index}})">{{option.text}}</li>
+    </ul>
+  </div>
+  </div>-->
+  
+</body>
+<script src="js/script.js"></script>
+<script type='text/javascript' src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type='text/javascript' src="lib/bootstrap/js/bootstrap.min.js"></script>
+ <!--<script src="lib/jquery/jquery.min.js"></script>
+ <script src="lib/jquery/jquery-migrate.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script type='text/javascript' src="lib/bootstrap-slider/js/bootstrap-slider.js"></script>-->
+ <!-- <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/mobile-nav/mobile-nav.js"></script>
+  <script src="lib/wow/wow.min.js"></script>
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/counterup/counterup.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/isotope/isotope.pkgd.min.js"></script>
+  <script src="lib/lightbox/js/lightbox.min.js"></script>
+  <script src="js/main.js"></script>-->
+
+</html>

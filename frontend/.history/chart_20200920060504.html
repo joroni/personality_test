@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.1.1/Chart.min.js"></script>
+    <script src="https://www.encodedna.com/angularjs/tutorial/angular-chart.js"></script>
+</head>
+
+<body>
+    <div ng-app="myChart" 
+        ng-controller="myController" style="width:700px;">
+
+        <canvas id="bar" 
+            class="chart chart-bar" 
+            data="data"
+            labels="labels"
+            colours="colors">
+        </canvas>
+    </div>
+</body>
+
+<script>
+    var myApp = angular.module('myChart', ["chart.js"]);
+
+    myApp.controller('myController',
+        function ($scope, $http) {
+
+            // REQUEST OPTIONS USING GET METHOD.
+            var request = {
+                method: 'get',
+                url: 'https://www.encodedna.com/angularjs/tutorial/chartdata.json',
+                dataType: 'json',
+                contentType: "application/json"
+            };
+
+            $scope.arrData = new Array;
+            $scope.arrLabels = new Array;
+
+            // MAKE REQUEST USING $http SERVICE.
+            $http(request)
+                .success(function (jsonData) {
+
+                    // LOOP THROUGH DATA IN THE JSON FILE.
+                    angular.forEach(jsonData, function (item) {
+                        $scope.arrData.push(item.SaleFigure);
+                        $scope.arrLabels.push(item.Month);
+                    });
+
+                    $scope.data = new Array;
+                    $scope.labels = new Array;
+
+                    // UPDATE SCOPE PROPERTIES �data� and �label� FOR DATA.
+                    $scope.data.push($scope.arrData.slice(0));
+
+                    for (var i = 0; i < $scope.arrLabels.length; i++) {
+                        $scope.labels.push($scope.arrLabels[i]);
+                    }
+                })
+                .error(function () {
+
+                });
+
+            // NOW, ADD COLOURS TO THE BARS.
+            $scope.colors = [{
+                fillColor: 'rgba(30, 169, 224, 0.8)',
+                strokeColor: 'rgba(30, 169, 224, 0.8)',
+                highlightFill: 'rgba(30, 169, 224,, 0.8)',
+                highlightStroke: 'rgba(30, 169, 224, 0.8)'
+            }];
+        });
+</script>
+</html>

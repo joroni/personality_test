@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <title>My App</title>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">
+</head>
+<body ng-app="myApp" ng-controller="myController">
+
+ <div class="container">
+  <h2>People</h2>
+   <ul ui-sortable="sortableOptions" class="list-group">
+    <li ng-repeat="person in people track by $index" class="list-group-item">{{person}}</li>
+   </ul>
+   <pre ng-repeat="person in person" >{{people.person}}</pre>
+ </div>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-sortable/0.15.0/sortable.min.js"></script>
+ <script>
+    var myapp = angular.module('myApp', ['ui.sortable']);
+
+    myapp.controller('myController', ['$scope', function($scope) {
+    
+     // people array
+     $scope.people = ["John","Fred","Teddy","Deloris","Brian"];
+    
+     // set up sortable options
+     $scope.sortableOptions = {
+       stop: function(e, ui) {
+         // do something here
+       }
+     };
+    }]);
+ </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+  <html lang="en"  ng-app="quiz">
+  <head>
+    <meta charset="utf-8">
+    <title>NewBiz Bootstrap Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+  
+    <!-- Favicons -->
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+  
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+  
+    <!-- Bootstrap CSS File -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  
+    <!-- Libraries CSS Files -->
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+  
+    <!-- Main Stylesheet File -->
+    <link href="css/style.css" rel="stylesheet">
+  <script src="lib/angularjs/1.6.9/angular.min.js"></script>
+  
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body ng-controller="quizCtrl">
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4">QUIZ APPLICATION</h1>
+    <p class="lead">{{questions.question}}</p>
+    <hr class="my-4">
+    <p class="lead">
+      <div class="navi">
+        <ul id="Q-{{qid}}">
+          <li ng-repeat="option in questions.options" style="list-style:none">
+            <input id="{{current + $index+1}}" ng-click="choiceSequence()" data-seq="{{current+numprio}}" class="btn btn-primary btn-lg" type="{{buttonType}}">{{option.text}}
+           
+              <div class="form-group">
+                <label for="formControlRange">Example Range input</label>
+                <input type="range" min="1" max="4" value="0" class="form-control-range" id="formControlRange{{$index}}">
+              </div>
+           
+          </li>
+        </ul>
+      </div>
+     
+    </p>
+  </div>
+
+
+
+<div class="jumbotron">
+  
+    <p class="lead">{{questions.question}}</p>
+    <div class="form-group row" ng-repeat="option in questions.options">
+      <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">{{option.text}}</label>
+      <div class="col-sm-10">
+        <!--<input type="range" min="1" max="5" value="0" class="form-control-range" id="formControlRange{{$index}}" placeholder="col-form-label-sm">-->
+        <form>
+          <label>{{option.text}} <input placeholder="temp"></label>
+          <fieldset class="rating">
+              <legend>rating</legend>
+            
+              <input id="demo-1" type="radio" name="demo" value="1"> 
+              <label for="demo-1">1 star</label>
+              <input id="demo-2" type="radio" name="demo" value="2">
+              <label for="demo-2">2 stars</label>
+              <input id="demo-3" type="radio" name="demo" value="3">
+              <label for="demo-3">3 stars</label>
+              <input id="demo-4" type="radio" name="demo" value="4">
+              <label for="demo-4">4 stars</label>
+              <input id="demo-5" type="radio" name="demo" value="5">
+              <label for="demo-5">5 stars</label>
+              
+              <div class="stars">
+                  <label for="demo-1" aria-label="1 star" title="1 star"></label>
+                  <label for="demo-2" aria-label="2 stars" title="2 stars"></label>
+                  <label for="demo-3" aria-label="3 stars" title="3 stars"></label>
+                  <label for="demo-4" aria-label="4 stars" title="4 stars"></label>
+                  <label for="demo-5" aria-label="5 stars" title="5 stars"></label>   
+              </div>
+              
+          </fieldset>
+            <label for="toggle-rating">
+                <input type="checkbox" id="toggle-rating" checked>
+                style as ★ (<code>.rating .stars</code>)
+            </label>
+          <script>
+              (function(){
+                  var rating = $('.rating');
+                  var handle = $('#toggle-rating');
+                  handle.onchange = function(event) {
+                      rating.classList.toggle('rating', handle.checked);
+                  };
+              }());
+          </script>
+      </form>
+
+</div>
+  <div class="question">
+    <h1>QUIZ APPLICATION</h1>
+    <h2>{{questions.question}}</h2>
+    <div class="navi">
+    <ul>
+      <li ng-repeat="option in questions.options" style="list-style:none">
+        <input type="{{buttonType}}">{{option.text}}</li>
+    </ul>
+  </div>
+  </div>
+  <div class="button">
+    <input type="button" value="previous" class="btn" ng-show="isPrevious" ng-click="previousQuestion()">
+    <input type="button" value="next" class="btn" ng-show="isNext" ng-click="nextQuestion()">
+  </div>
+</div>
+</body>
+<script src="js/script.js"></script>
+<script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/jquery/jquery-migrate.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/mobile-nav/mobile-nav.js"></script>
+  <script src="lib/wow/wow.min.js"></script>
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/counterup/counterup.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/isotope/isotope.pkgd.min.js"></script>
+  <script src="lib/lightbox/js/lightbox.min.js"></script>
+  <script src="js/main.js"></script>
+
+
+</html>

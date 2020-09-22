@@ -1,0 +1,50 @@
+[
+    {
+   "Month": "JAN",
+   "SaleFigure": "21"
+},
+	{
+    "Month": "FEB",
+    "SaleFigure": "56"
+}, 
+	{
+    "Month": "MAR",
+    "SaleFigure": "4"
+},
+	{
+    "Month": "APR",
+    "SaleFigure": "61"
+},
+	{
+    "Month": "MAY",
+    "SaleFigure": "45"
+},
+	{
+    "Month": "JUN",
+    "SaleFigure": "56"
+},
+	{
+    "Month": "JUL",
+    "SaleFigure": "12"
+},
+	{
+    "Month": "AUG",
+    "SaleFigure": "31"
+},
+	{
+    "Month": "SEP",
+    "SaleFigure": "37"
+},
+	{
+    "Month": "OCT",
+    "SaleFigure": "42"
+},
+	{
+    "Month": "NOV",
+    "SaleFigure": "79"
+},
+	{
+    "Month": "DEC",
+    "SaleFigure": "11"
+}
+]

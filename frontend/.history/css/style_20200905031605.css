@@ -1,0 +1,64 @@
+* {}
+
+body {}
+
+.question {
+  width: 70%;
+  margin: 0 auto;
+  height: auto;
+  display: block;
+  background: #eeeeee;
+}
+
+.question h1 {
+  text-align: center;
+  padding-top: 30px;
+  color: #666666;
+}
+
+.question h2 {
+  width: 100%;
+  font-size: 22px;
+  color: #0c1e5c;
+  padding: 1% 3% 0% 3%;
+}
+/*
+.question ul:nth-child(odd) {
+  background: #d0dff6;
+  width: 30%;
+  padding: 8px;
+  margin: 1% 9%;
+  display: inline-block;
+  color: #0c1e5c;
+}
+
+.question ul:nth-child(even) {
+  background: #d0dff6;
+  width: 30%;
+  padding: 8px;
+  margin: 1% 9%;
+  display: inline-block;
+  color: #0c1e5c;
+}
+*/
+
+.button {
+  text-align: center;
+  margin: 1% 0;
+}
+
+.btn {
+  background: #8bf8a7;
+  padding: 5px;
+}
+
+
+
+.navi {
+  text-align: center;
+  display: table;
+  width: 100%;
+}
+.navi ul { display: table-row; }
+.navi li { display: table-cell; width: 20%; }
+.navi li a { display: block; border: 1px solid #000; }

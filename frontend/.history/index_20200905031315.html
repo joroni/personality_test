@@ -1,0 +1,29 @@
+<html ng-app="quiz">
+
+<head>
+  <meta charset="utf-8">
+  <title>Basic Quiz</title>
+  <script src="lib/angularjs/1.6.9/angular.min.js"></script>
+  
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body ng-controller="quizCtrl">
+  <div class="question">
+    <h1>QUIZ APPLICATION</h1>
+    <h2>{{questions.question}}</h2>
+    <div class="navi">
+    <ul>
+      <li ng-repeat="option in questions.options" style="list-style:none">
+        <input type="{{buttonType}}">{{option.text}}</li>
+    </ul>
+  </div>
+  </div>
+  <div class="button">
+    <input type="button" value="previous" class="btn" ng-show="isPrevious" ng-click="previousQuestion()">
+    <input type="button" value="next" class="btn" ng-show="isNext" ng-click="nextQuestion()">
+  </div>
+</body>
+<script src="js/script.js"></script>
+
+</html>

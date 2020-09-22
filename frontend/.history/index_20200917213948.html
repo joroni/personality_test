@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="quiz">
+
+<head>
+  <meta charset="utf-8">
+  <title>NewBiz Bootstrap Template</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons 
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">-->
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
+    rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+  <link href="lib/bootstrap-slider/css/bootstrap-slider.css" rel="stylesheet">
+  <!-- Main Stylesheet File -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/quiz.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <script type="text/javascript" src="lib/ng-sortable/ng-sortable.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="lib/ng-sortable/ng-sortable.min.css">
+  
+  <!-- OPTIONAL: default style -->
+  <link rel="stylesheet" type="text/css" href="lib/ng-sortable/ng-sortable.style.min.css">
+  ```
+
+</head>
+
+<body ng-controller="quizCtrl" ng-init="initData()">
+  <div class="container">
+
+    <!--
+  
+    Two items can not share the same value.
+      <div ng-repeat="item2 in data2">
+        <span>
+          {{item2.name}}
+        </span>
+        <select ng-model="item2.value" ng-change="onChanged()" ng-options="choice for choice in possibleChoices">
+        </select>
+      </div>
+    -->
+
+
+
+    <div class="jumbotron center flex-item slideRight ">
+
+      <!--<h1 class="display-4">QUIZ APPLICATION</h1>
+    <p class="lead">{{questions.question}}</p>
+    <hr class="my-4">-->
+      <p class="lead">
+      <div class="navi">
+        <form id="{{QuestId}}" class="form-group" ng-init="initQuestion()">
+          
+          <div class="text-left" style="width:80%; margin:0 auto; padding-left:1rem;">
+            
+            <span class="heading-subs">
+              <div class="icon-box wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                <span class="icon badge badge-light mb-5 custom-badge">{{qid}}</span>
+                <h4 class="title">Be Yourself.</h4>
+                <p class="description"> Rearrange the faces by dragging vertically according to your personality.</p>
+              </div>
+          </span>
+
+          <div class="row text-center">
+
+            <div class="col-sm-8">
+              <div>
+                <input type="hidden" name="user_id" ng-model="ans.user_id" ng-value="{{user_id}}">
+               
+                <ul class="list-group list-group-flush">
+                  <li ng-repeat="name in nameArr" class="list-group-item quest_items">{{name}}
+                    
+                  </li>
+                 <!--  <input type="text" name="question_id" ng-model="answers[questions.questionsid].question_id" ng-value={{questions.question_id}}> -->
+                 <input type="hidden" name="{{question_id}}" ng-model="ans[question.question_id]" ng-value={{question.question_id}}> 
+                </ul>
+
+                
+              </div>
+            </div>
+            <div class="col-sm-1">
+
+
+              <ul class="list-group" psi-sortable="" ng-model="list">
+                <li class="choice-list-group-item list-group-item list-group-item-action index{{$index}}"
+                  ng-repeat="item in list track by $index" ><img  src="img/{{item.image}}" class="img-icon"
+                    title="{{item.label}}" /> <span>{{item.value}}</span>
+                    
+                  
+                   </li>
+              </ul>
+
+              <div style="display:none;" class="choice-list"><span
+                  ng-repeat="item in list track by $index">{{item.value}}</span>
+              </div>
+
+              
+
+            </div>
+            <div class="col-sm-3">
+              <ul class="list-group">
+                <li class="text-left choice-list-group-items list-group-item-simple list-group-item list-group-item-action"
+                  ng-repeat="item in list track by $index">{{item.label}}
+                 
+          
+                </li>
+              </ul>
+              
+            </div>
+          
+            <input id="MyAnswer" type="hidden" class="choice-input" name="choice_input" ng-model="ans[$index].choice_id" />
+          <!--  <input type="text" class="choice-input" ng-model="address1">  -->
+           <!-- <input type="text" class="choice-input" ng-model="answers[$index].choice_id">  -->
+           
+          
+            <div class="button mt-5">
+              <div class="row">
+                <div class="col-sm-8">  <input type="button" value="Go for it!" class="btn btn-primary btn-lg btn-confirm"
+                  ng-click="add(selectedhead); isNext = true;" ></div>
+                <div class="col-sm-4 text-right"><input type="button" value="Next" class="btn btn-primary btn-lg btn-next slideUp" ng-show="isNext"
+                  ng-click="nextQuestion(selectedhead); isOk = false; isNext = false;">
+              </div></div>
+              </div>
+              <div class="sm-10">
+                <!--<input type="button" value="previous" class="btn btn-primary btn-lg btn-prev" ng-show="isPrevious"
+                  ng-click="previousQuestion()">
+                <input type="button" value="OK" class="btn btn-primary btn-lg btn-confirm"
+                  ng-click="selectColumn(selectedhead); isNext = true;" >-->
+                
+                
+            </div>
+            <div class="col-sm-2">
+            </diV>
+
+
+          </div>
+            <!--  <div class="button mt-5">
+          <div class="sm-10">
+           <input type="button" value="previous" class="btn btn-primary btn-lg btn-prev" ng-show="isPrevious"
+            ng-click="previousQuestion()"> 
+            <input type="button" value="OK" class="btn btn-primary btn-lg btn-confirm" 
+            ng-click="collectData(); isOk=true; isNext = true" ng-hide="isOk" ng-init="isOk = false">
+            <input type="button" value="Next" class="btn btn-primary btn-lg btn-next slideRight" ng-show="isNext"
+            ng-click="nextQuestion(selectedhead); isOk = false; isNext = false;">
+            </div>
+          </div>
+          <div class="col-sm-2">
+          </diV> -->
+        </form>
+
+      </div>
+
+      </p>
+    </div>
+
+
+
+    <div>
+      <!--  <table>
+                <tr>
+                    <td>User ID</td>
+                    <td><input type='text' id='txt_user_id' ng-model='user_id'></td>
+                </tr>
+                <tr>
+                    <td>Question ID</td>
+                    <td><input type='text' id='txt_question_id' ng-model='question_id' ng-value="{{qid}}"></td>
+                </tr>
+                <tr>
+                    <td>Choice ID</td>
+                    <td><input type='text' id='txt_choice_id' class='choice-input' ng-model='choice_id'></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><input type='button' id='but_save' value='Save' ng-click="add()" ></td>
+                </tr>
+            </table>
+            <table border="1">
+                
+                <tr>
+                    <th>User ID</th>
+                    <th>Question ID</th>
+                    <th>Choice ID</th>
+                    <th>&nbsp;</th>
+                </tr>
+                
+                <tr ng-repeat="item in answers">
+                <td>{{item.user_id}}</td>
+                <td>{{item.question_id}}</td>
+                <td>{{item.choice_id}}</td>
+                <td><input type='button' ng-click='remove($index,user_question_answer.id);' value='Delete'></td>
+                </tr>
+                
+            </table>-->
+    </div>
+ 
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script> -->
+<script src="lib/angularjs/1.6.9/angular.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-sortable/0.15.0/sortable.min.js"></script> -->
+<script src="js/sortable.js"></script>
+<script type='text/javascript' src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
+<script src="js/main.js"></script>
+
+
+<!--<script src="lib/jquery/jquery.min.js"></script>
+ <script src="lib/jquery/jquery-migrate.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script type='text/javascript' src="lib/bootstrap-slider/js/bootstrap-slider.js"></script>-->
+<!-- <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/mobile-nav/mobile-nav.js"></script>
+  <script src="lib/wow/wow.min.js"></script>
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/counterup/counterup.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/isotope/isotope.pkgd.min.js"></script>
+  <script src="lib/lightbox/js/lightbox.min.js"></script>
+  <script src="js/main.js"></script>-->
+
+</html>

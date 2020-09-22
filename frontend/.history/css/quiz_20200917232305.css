@@ -1,0 +1,214 @@
+body, html {
+  font-family: "Montserrat", sans-serif;
+  background:#0a94b2;
+  height: 100%;
+}
+.jumbotron.vertical-center {
+  margin-bottom: 0; /* Remove the default bottom margin of .jumbotron */
+  background-color: transparent;
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for vh unit */
+  min-height: 100vh; /* You might also want to use
+                        'height' property instead.
+                        
+                        Note that for percentage values of
+                        'height' or 'min-height' properties,
+                        the 'height' of the parent element
+                        should be specified explicitly.
+  
+                        In this case the parent of '.vertical-center'
+                        is the <body> element */
+
+  /* Make it a flex container */
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex; 
+  
+  /* Align the bootstrap's container vertically */
+    -webkit-box-align : center;
+  -webkit-align-items : center;
+       -moz-box-align : center;
+       -ms-flex-align : center;
+          align-items : center;
+  
+  /* In legacy web browsers such as Firefox 9
+     we need to specify the width of the flex container */
+  width: 100%;
+  
+  /* Also 'margin: 0 auto' doesn't have any effect on flex items in such web browsers
+     hence the bootstrap's container won't be aligned to the center anymore.
+  
+     Therefore, we should use the following declarations to get it centered again */
+         -webkit-box-pack : center;
+            -moz-box-pack : center;
+            -ms-flex-pack : center;
+  -webkit-justify-content : center;
+          justify-content : center;
+}
+
+.container {
+  background-color: #e9ecef;
+}
+ 
+.icon-box .icon {
+  float: left;
+  background: #494e88;
+  width: 42px;
+  height: 42px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 50%;
+  border: 0px solid #007bff;
+  transition: all 0.3s ease-in-out;
+}
+
+.hidden {
+  display:none !important;
+}
+
+.navi {
+  margin: 0 auto;
+  width:100%;
+}
+
+
+h4{
+  font-weight: 600;
+}
+
+.jumbotron {
+ 
+  margin: 0 auto;
+}
+.button.mt-5 {
+  width: 100%;
+}
+
+.question-container {
+  text-align: center;
+  margin: 0;
+}
+.quest_items {
+  text-align: center;
+  border-radius: 20px !important;
+  font-weight: 600;
+}
+li.choice-list-group-item {
+  cursor: move;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  border: none;
+  margin-top: 6px;
+  border-radius: 50% !important;
+}
+
+.list-group-item-action:focus, .list-group-item-action:hover {
+  color: #495057;
+  text-decoration: none;
+  background-color: #fff;
+}
+
+
+
+
+.btn-confirm {
+background:#0a94b2;
+}
+.btn-confirm:hover {
+  background:#494e88;
+  }
+.img-icon {
+  object-fit: cover;
+  vertical-align: middle;
+  border-style: none;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.btn {
+  width:10rem;
+}
+.btn-next {
+  background: #5aac44;
+}
+
+.list-group-item-simple {
+  background: none;
+  border: none;
+  line-height: 2.1rem;
+  font-weight: 500;
+  color: #0a94b2;
+}
+.list-group-item-simple:hover  {
+  background: none;
+  border:none;
+  color:#c46c6f;
+}
+li.choice-list-group-item:hover  {
+  
+  color: #fff;
+  font-weight:600;
+ 
+
+}
+.heading-subs{
+  font-weight:600;
+  font-size:1.2rem;
+  margin-left: 1rem;
+}
+.custom-badge {
+  font-size: 1rem;
+  padding: 12px 10px;
+
+    margin-right: 20px;
+  
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #494e88;
+  color: #fff;
+}
+
+.in-middle {
+  height: 100%;      
+  display: flex;
+  align-items: center;
+}
+
+.quest_items {
+  color: #494e88;
+font-size:1.3rem;
+}
+
+
+@media (max-width: 991px) {
+  .jumbotron {
+   /* margin-top:15%; */
+  }
+}

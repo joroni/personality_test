@@ -1,0 +1,18 @@
+[
+    {
+   "Month": "JAN",
+   "SaleFigure": "21"
+},
+	{
+    "Month": "FEB",
+    "SaleFigure": "56"
+}, 
+	{
+    "Month": "MAR",
+    "SaleFigure": "4"
+},
+	{
+    "Month": "APR",
+    "SaleFigure": "61"
+}
+]

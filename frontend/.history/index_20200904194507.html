@@ -1,0 +1,15 @@
+<div ng-app="ngApp" ng-controller="QuizController as quizCtrl">
+	<ul>
+		<li ng-repeat="quizItem in quizCtrl.questionList[0].Questions track by $index" ng-init="parentIndex = $index" ng-show="$index == quizCtrl.currQuestion">
+			<h3 class="single-question" ng-bind-html="quizItem.Question"></h3>
+			<ul class="choices">
+				<li ng-repeat="answer in quizItem.Options" ng-click="quizCtrl.makeSelection($parent.$index,$index,answer)" ng-class="{'selected' : quizCtrl.selections[$parent.$index] == $index}">{{ answer }}</li>
+			</ul>
+		</li>
+	</ul>
+	<span class="quizNav" ng-click="quizCtrl.previousQuestion()" ng-class="{'enabled' : quizCtrl.currQuestion !== 0}">Previous Question</span>
+	<span class="quizNav" ng-click="quizCtrl.nextQuestion()" ng-class="{'enabled' : quizCtrl.currQuestion < (quizCtrl.questionList[0].Questions.length-1) && quizCtrl.allowNav == true}" ng-hide="quizCtrl.currQuestion == (quizCtrl.questionList[0].Questions.length-1)">Next Question</span>
+	<span class="quizNav" ng-click="quizCtrl.nextQuestion()" ng-show="quizCtrl.currQuestion == (quizCtrl.questionList[0].Questions.length-1)">Finish Quiz</span>
+	
+	<h5 ng-click="quizCtrl.resetQuiz()">Reset Quiz</h5>
+</div>

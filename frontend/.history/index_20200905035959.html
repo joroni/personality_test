@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+  <html lang="en"  ng-app="quiz">
+  <head>
+    <meta charset="utf-8">
+    <title>NewBiz Bootstrap Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+  
+    <!-- Favicons -->
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+  
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+  
+    <!-- Bootstrap CSS File -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  
+    <!-- Libraries CSS Files -->
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+  
+    <!-- Main Stylesheet File -->
+    <link href="css/style.css" rel="stylesheet">
+  <script src="lib/angularjs/1.6.9/angular.min.js"></script>
+  
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body ng-controller="quizCtrl">
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4">QUIZ APPLICATION</h1>
+    <p class="lead">{{questions.question}}</p>
+    <hr class="my-4">
+    <p class="lead">
+      <div class="navi">
+        <ul>
+          <li ng-repeat="option in questions.options" style="list-style:none">
+            <input id="{{index++}}" ng-click="choiceSequence()" data-seq="{{numprio}}" class="btn btn-primary btn-lg" type="{{buttonType}}">{{option.text}}</li>
+        </ul>
+      </div>
+     
+    </p>
+  </div>
+</div>
+
+  <div class="question">
+    <h1>QUIZ APPLICATION</h1>
+    <h2>{{questions.question}}</h2>
+    <div class="navi">
+    <ul>
+      <li ng-repeat="option in questions.options" style="list-style:none">
+        <input type="{{buttonType}}">{{option.text}}</li>
+    </ul>
+  </div>
+  </div>
+  <div class="button">
+    <input type="button" value="previous" class="btn" ng-show="isPrevious" ng-click="previousQuestion()">
+    <input type="button" value="next" class="btn" ng-show="isNext" ng-click="nextQuestion()">
+  </div>
+</body>
+<script src="js/script.js"></script>
+<script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/jquery/jquery-migrate.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/mobile-nav/mobile-nav.js"></script>
+  <script src="lib/wow/wow.min.js"></script>
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/counterup/counterup.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/isotope/isotope.pkgd.min.js"></script>
+  <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+</html>
