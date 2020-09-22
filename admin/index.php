@@ -3,15 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Personality Test Admin</title>
-    <!-- Bootstrap 
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
-    <link rel="stylesheet" href="lib/bootstrap/3.3.7/css/bootstrap.min.css"> 
+    <title>SoftAOX | AngularJS User Signup And Login Authentication Using PHP &amp; MySQL</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
     <link href="css/toaster.css" rel="stylesheet">
-     -->
-     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css"> 
-    <link href="css/toaster.css" rel="stylesheet">
-     <style>
+    <style>
         body {
             padding-top: 100px;
         }
