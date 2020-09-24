@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="quiz">
+   <head>
+      <meta charset="utf-8">
+      <title>Personality Test</title>
+      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+      <meta content="" name="keywords">
+      <meta content="" name="description">
+      <!-- Favicons 
+         <link href="img/favicon.png" rel="icon">
+         <link href="img/apple-touch-icon.png" rel="apple-touch-icon">-->
+      <!-- Google Fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
+         rel="stylesheet">
+      <!-- Bootstrap CSS File -->
+      <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Libraries CSS Files -->
+      <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+      <link href="lib/animate/animate.min.css" rel="stylesheet">
+      <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+      <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+      <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+      <link href="lib/bootstrap-slider/css/bootstrap-slider.css" rel="stylesheet">
+      <!-- Main Stylesheet File -->
+      <link href="css/style.css" rel="stylesheet">
+      <link href="css/quiz.css" rel="stylesheet">
+      <link rel="stylesheet" href="css/animations.css">
+   </head>
+   <body ng-controller="quizCtrl" ng-init="initData()" ng-cloak>
+      <div class="jumbotron vertical-center">
+      <div class="container text-center rounded-2">
+         
+         <div class="navi">
+            <!--------------- Start screens-->
+            <!-- <div class="row text-center result-screen slideUp" ng-show="isThanks" ng-init="getUserResult()"> -->
+                <!--------------- End isTempo -->
+            <div class="row text-center welcome-screen slideDown" ng-show="isTempo" ng-init="fetchGetVariables();" >
+               <div class="col-md-12 text-center mt-5c mb-5c">
+                 <p>Test users:
+                 </p>
+                  <ul>
+                     <li><a href="../?user_email=jraymund.niconi@gmail.com&order=23">jraymund</a></li>
+                     <li><a href="../?user_email=susan@gmailme.com&order=25">susan</a></li>
+                     <li><a href="../?user_email=jane@gmailme.com&order=24">jane</a></li>
+                  </ul>
+               <p>
+                 </p>
+                  
+               </div>
+            </div>
+
+            <div class="row text-center result-screen slideUp" ng-show="isThanks"  ng-init="fetchGetVariables();">
+               <div class="col-md-4 text-center">
+                  <div class="mt-5c mb-5c">
+                        <h4>Semi-Result Screen</h4>
+                        <p>The quick brown fox jumps over the lazy dog.</p>
+                        <p>The overall result emailed to you. Please check your inbox.</p>
+                        <input type="button" value="Home" class="btn btn-primary btn-lg btn-next slideUp"
+                        ng-click="isWelcome=true; isThanks=false;">
+                  </div>
+               </div>
+               <div class="col-md-8">
+                  <div class="mt-5c mb-5c">
+                        <canvas id="base" class="chart-bar chart"
+                        chart-data="dataresult" chart-labels="labels" >
+                     </canvas> 
+                  </div>
+              <!--  <chart style="width: 100%; height: 500px"></chart> -->
+               </div>
+               
+              
+            </div>
+           
+            <!--------------- End isThanks -->
+            <div class="row text-center welcome-screen slideDown" ng-show="isWelcome" ng-init="fetchGetVariables(); getUserInfo();">
+               <div class="col-md-12 text-center mt-5c mb-5c">
+                  <div ng-repeat="user in userInfo">
+                     <h4 >Welcome, {{user.first_name}}!</h4>
+                  
+                     <p>Ready to get your personality test?</p>
+                     <p>Press Start button to begin. </p>
+       <!--        <input type="hidden" ng-model="user.user_id" ng-value="{{user.user_id}}" /> 
+              <input type="hidden" ng-model="user.group_id" ng-value="{{user.group_id}}" />  -->
+                  </div>
+                  <!-- <table class="table-responsive hidden">
+                     <tbody>
+                         <form class="form-inline" action="" method="post" ng-init="fetchGetVariables()">
+                             <div class="form-group">
+                                 <tr>
+                                     <td><label for="email">E-mail</label></td>
+                                     <td>
+                                         <div class="input-group">
+                                             <input type="email" class="form-control" name="email" ng-model="userdata.email">
+                                             <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
+                                         </div>
+                                   
+                                     </td>
+                                 </tr>
+                             </div>
+                             <div class="form-group hidden">
+                                 <tr>
+                                    
+                                     <td><label for="first_name">First Name</label></td>
+                                     <td><input type="hidden" class="form-control" name="first_name" ng-model="userdata.first_name"><td>
+                                 </tr>
+                             </div>
+                             <div class="form-group ">
+                                 <tr>
+                                     <td><label for="user_id">User ID:</label></td>
+                                     <td><input type="hidden" class="form-control" ng-value="{{userdata.user_id}}" name="user_id" ng-model="userdata.user_id"></td>
+                                 </tr>
+                             </div>
+                             <tr><td>
+                                     
+                              <input class="btn btn-default" type="button" value="Register" ng-click="registerUser(userdata); getUserInfo(userdata);"></td></tr>
+                         </form>
+                     </tbody>
+                 </table> -->
+                  <input type="button" value="Start" class="btn btn-primary btn-lg btn-next slideUp"
+                     ng-click="isWelcome=false; isQuiz=true;">
+               </div>
+            </div>
+            <!--------------- End isWelcome-->
+            <form ng-cloak id="{{QuestId}}" class="form-group quiz-screen" ng-show="isQuiz" ng-init="initQuestion()">
+               <div class="text-left" style="width:80%; margin:60px auto; padding-left:1rem;">
+                  <span class="heading-subs">
+                     <div class="icon-box wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                        <span class="icon badge badge-light mb-5 custom-badge" ng-cloak>{{index+1}}</span>
+                        <h4 class="title">Be Yourself.</h4>
+                        <p class="description">Rearrange the faces by dragging them up or down to align with description on the left. Of course this corresponds to your personality on how you respond.</p>
+                     </div>
+                  </span>
+                  <div class="row text-center">
+                     <div class="col-sm-8">
+                        <div>
+                           <input type="button" value="Go for it!" ng-show="isOk"
+                              class="btn btn-primary btn-lg btn-confirm"
+                              ng-click="add(userdata);isOk= false; isNext = true; isDone= false; isLast() ">
+                           <input type="hidden" name="user_id" ng-model="ans.user_id" ng-cloak ng-value="{{user_id}}">
+                           <ul class="list-group list-group-flush mt-3">
+                              <li ng-repeat="name in nameArr" class="list-group-item quest_items" ng-cloak>{{name}}
+                              </li>
+                              <!--  <input type="text" name="question_id" ng-model="answers[questions.questionsid].question_id" ng-value={{questions.question_id}}> -->
+                              <input type="hidden" name="{{question_id}}" ng-model="ans[question.question_id]"
+                                 ng-value={{question.question_id}} ng-cloak>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="col-sm-4">
+                        <div class="drag-shield" ng-show="isDrag"></div>
+                        <ul class="list-group" psi-sortable="" ng-model="list" ng-mouseleave="isOk = true">
+                           <li class="choice-list-group-item list-group-item list-group-item-action index{{$index}}"
+                              ng-repeat="item in list track by $index"><img   ng-src="img/{{item.image}}"  ng-cloak class="img-icon"
+                              title="{{item.label}}" /> <span ng-cloak>{{item.value}}</span>
+                           </li>
+                        </ul>
+                        <div style="display:none;" class="choice-list"><span
+                           ng-repeat="item in list track by $index" ng-cloak>{{item.value}}</span>
+                        </div>
+                     </div>
+                     <!-- <div class="col-sm-3">
+                        <ul class="list-group">
+                           <li
+                              class="text-left choice-list-group-items list-group-item-simple list-group-item list-group-item-action"
+                              ng-repeat="item in list track by $index">{{item.label}}
+                           </li>
+                        </ul>
+                     </div> -->
+                     <input id="MyAnswer" type="hidden" class="choice-input"  name="choice_input"
+                        ng-model="isanswer" />
+                     <!--  <input type="text" class="choice-input" ng-model="address1">  -->
+                     <!-- <input type="text" class="choice-input" ng-model="answers[$index].choice_id">  -->
+                     <div class="button mt-5">
+                        <div class="row">
+                           <div class="col-sm-8"> <input type="button" value="Go for it!" ng-show="isOk"
+                              class="btn btn-primary btn-lg btn-confirm"
+                              ng-click="add(userdata);isOk= false; isNext = true; isDone= false; isLast() "></div>
+                           <div class="col-sm-3 text-right">
+                              <input type="button" value="Next" class="btn btn-primary btn-lg btn-next slideUp" ng-show="isNext"
+                                 ng-click="nextQuestion(selectedhead); isOk = false; isNext = false;">
+                              <input type="button" value="Done" class="btn btn-primary btn-lg btn-next slideUp" ng-show="isDone"
+                                 ng-click="getUserResult();isQuiz = false;isThanks=true;">
+                             
+                                <!--  <input type="button" value="Result" class="btn btn-primary btn-lg btn-next slideUp" ng-show="isResult"
+                                 ng-click="isQuiz = false; isThanks=true;showUserResult(); getUserResult()"> -->
+                           </div>
+                           <div class="col-sm-1">
+                              <button class="btn btn-danger btn-reset" title="Reset"  ng-click="removemytest(); isQuiz = false; isThanks=false; isWelcome=true; "><i class="fa fa-refresh"></i></button>
+                              <!--    <button class="btn"><i class="fa fa-home"></i></button> type="button" value="Reset" class="btn btn-primary btn-lg btn-next slideUp" ng-show="isNext"
+                              ng-click="removemytest();isQuiz = false;isThanks=true;"> -->
+                              </div>
+                        </div>
+                        <!-- {{index+1}}{{totalquestions}} -->
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-sm-12 mt-3">
+                        <p class="indexing text-right">{{index+1}}<span>&nbsp;of&nbsp; </span> {{totalquestions}}</p>
+                     </div>
+                  </div>
+            </form>
+            <!--------------- End isQuiz -->
+            </div>
+         </div>
+      </div>
+   </body>
+   <script src="lib/jquery/3.1.1/jquery.min.js"></script>
+   <script src="lib/jqueryui/1.12.1/jquery-ui.min.js"></script>
+   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script> -->
+<!--    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+   <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+   <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+ -->
+ <script src="lib/angularjs/1.6.9/angular.min.js"></script>
+ <script src="lib/chart/Chart.min.js"></script>
+<script src="lib/angular-chart.js/angular-chart.min.js"></script>
+   
+   
+   
+   
+   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-sortable/0.15.0/sortable.min.js"></script> -->
+   <script src="js/sortable.js"></script>
+   <script type='text/javascript' src="lib/bootstrap/js/bootstrap.min.js"></script>
+   <script src="js/script.js"></script>
+   <script src="js/main.js"></script>
+   <!-- <script src="chart.js"></script> -->
+   <!--<script src="lib/jquery/jquery.min.js"></script>
+      <script src="lib/jquery/jquery-migrate.min.js"></script>
+       <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+       <script type='text/javascript' src="lib/bootstrap-slider/js/bootstrap-slider.js"></script>-->
+   <!-- <script src="lib/easing/easing.min.js"></script>
+      <script src="lib/mobile-nav/mobile-nav.js"></script>
+      <script src="lib/wow/wow.min.js"></script>
+      <script src="lib/waypoints/waypoints.min.js"></script>
+      <script src="lib/counterup/counterup.min.js"></script>
+      <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+      <script src="lib/isotope/isotope.pkgd.min.js"></script>
+      <script src="lib/lightbox/js/lightbox.min.js"></script>
+      <script src="js/main.js"></script>-->
+</html>
