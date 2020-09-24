@@ -377,7 +377,7 @@ $scope.isLast= function() {
       method: 'post',
       url: 'processor/addremove.php',
       data: {
-        user_id: $scope.userid,
+        user_id: $scope.userid ,
         request_type: 7
       },
     }).then(function successCallback(response) {
@@ -497,9 +497,9 @@ $scope.isLast= function() {
     }).then(function successCallback(response) {
       if (response.data.length > 0) {
        // $scope.answers.push(response.data[0]);
-       alert('Scores submitted');
+        console.log('Scores submittd');
       } else {
-        alert('Seems you already have taken the test previously. Sorry, This test will not be recorded.');
+        console.log('Seems you already have taken the test previously. Sorry, This test will not be recorded.');
       }
     });
   }

@@ -497,7 +497,7 @@ $scope.isLast= function() {
     }).then(function successCallback(response) {
       if (response.data.length > 0) {
        // $scope.answers.push(response.data[0]);
-       alert('Scores submitted');
+        console.log('Scores submitted');
       } else {
         alert('Seems you already have taken the test previously. Sorry, This test will not be recorded.');
       }

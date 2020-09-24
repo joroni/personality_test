@@ -192,8 +192,8 @@ app.controller("quizCtrl", function ($scope, $http) {
     }).then(function successCallback(response) {
      let userInfo = response.data;
       console.log('userInfo', userInfo);
-      $scope.userInfo = userInfo;
-      /* $scope.user_id = userInfo.user_id;
+    /*   $scope.userInfo = userInfo;
+      $scope.user_id = userInfo.user_id;
       $scope.group_id = userInfo.group_id;
       sessionStorage.setItem('userinfo', JSON.stringify($scope.userInfo)); */
       return $scope.userInfo;
@@ -377,7 +377,7 @@ $scope.isLast= function() {
       method: 'post',
       url: 'processor/addremove.php',
       data: {
-        user_id: $scope.userid,
+        user_id: $scope.user_id,
         request_type: 7
       },
     }).then(function successCallback(response) {
@@ -454,7 +454,7 @@ $scope.isLast= function() {
     $scope.dataresult = [$scope.userResult];
     sessionStorage.setItem('myresult', JSON.stringify($scope.userResult));
   /*   } */
-  $scope.addScore($scope.userResult);
+  $scope.addScore($scope.dataresult);
     });
    }
    
@@ -497,9 +497,9 @@ $scope.isLast= function() {
     }).then(function successCallback(response) {
       if (response.data.length > 0) {
        // $scope.answers.push(response.data[0]);
-       alert('Scores submitted');
+        console.log('Scores not submittd');
       } else {
-        alert('Seems you already have taken the test previously. Sorry, This test will not be recorded.');
+        console.log('Scores not submittd');
       }
     });
   }
