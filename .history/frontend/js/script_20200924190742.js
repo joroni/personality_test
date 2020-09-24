@@ -522,6 +522,15 @@ $scope.thenDone = function(){
     sessionStorage.setItem('quizItem', JSON.stringify($scope.runningQuestionData));
   }
 
+  /* 
+    var value = $scope.choices;
+    var blkstr = [];
+    $.each(value, function(idx2,val2) {                    
+      var str = idx2 + ":" + val2;
+      blkstr.push(str);
+    });
+    console.log(blkstr.join("")); */
+
 
 
   $scope.nodeQuestion = function (questionhead) {
@@ -545,7 +554,42 @@ $scope.thenDone = function(){
       console.log('parent', $scope.qParent);
     }
 
-   
+    /*
+
+    let data
+        var childArr = ['ft Some older versions read, ',
+        'fqa And we are writing these things to you so that your joy will be complete. ',
+        'fqb  ',
+        'f*'
+      ],
+      data = {
+        children: []
+      };
+    for (var j = 0; j < childArr.length; j++) {
+      let split = childArr[j].split(" ");
+      data.children.push({
+        marker: split[0],
+        value: split.slice(1, -1).join(" ")
+      });
+    }
+
+    console.log(data.children);*/
+    //  var data = [{ BuildingID: "56", FloorId: "65", volume: [{ one: 12, two: 15,   three: 12}] }]
+    /*var data =   $scope.runningQuestionData.push(questionhead);
+
+    var MainInfo=[];
+                for (i = 0; i < data.length; i++) {
+                    var obj = {}
+                    obj.qID = data[i].index;
+                    obj.opID = data[i].index;
+                    data[i].priority.forEach(function(a,c){
+                    Object.keys(data[i].volume[c]).forEach(function(a,b){
+                      obj[a] = Object.values(data[i].volume[c])[b]
+                    })
+                    })
+                    MainInfo.push(obj);
+                }
+                console.log(MainInfo)*/
   }
 
   $scope.nextQuestion = function (selectedhead) {
@@ -568,14 +612,36 @@ $scope.thenDone = function(){
 
     $scope.arrayQuestion($scope.questions.question);
     $scope.initQuestion();
-    
+    /* $scope.list = [{
+      label: "1st",
+      image: "face-a.png",
+      value: 4
+    }, {
+      label: "2nd",
+      image: "face-b.png",
+      value: 3
+    }, {
+      label: "3rd",
+      image: "face-c.png",
+      value: 2
+    }, {
+      label: "4th",
+      image: "face-d.png",
+      value: 1
+    }]; */
     selectedhead = $scope.qid;
     $scope.thisQ = JSON.parse(sessionStorage.getItem('quizItem'));
     console.log($scope.thisQ);
     $scope.runningQuestionData.push(selectedhead);
     sessionStorage.setItem('quizItem', JSON.stringify($scope.runningQuestionData));
     console.log($scope.thisQ + '-' + $scope.index);
-   
+    /*for (var i = 0; i < thisQ.length; i++) {
+      console.log(thisQ.$index+'-'+$scope.$index);
+     // if (thisQ.$index !== $scope.$index){
+        $scope.runningQuestionData.push(selectedhead);
+        sessionStorage.setItem('quizItem', JSON.stringify($scope.runningQuestionData));
+       // }
+    }*/
 
     $scope.emptyArr = false;
     //$scope.initData();
@@ -606,10 +672,52 @@ $scope.thenDone = function(){
     $scope.selValue = selectedColumn;
     questionId = $scope.QuestId;
     $scope.datavalue = $scope.data;
-  
+    /*  if($scope.selValue == null){
+        $scope.selValue = selectedColumn;
+      }*/
+    /* console.log('selected',$scope.selValue);
+
+     var obj = {
+       'priority': selectedColumn,
+       'questionid':questionId
+       
+     };*/
+
+    //  $scope.datavalue.push(obj);
     console.log('datavalue', $scope.datavalue);
 
   }
 
-  
+  /*
+
+    $scope.choiceUnique = function (val) {
+      // myValue = $scope.ratingVal;
+      $scope.ratingVal = val;
+      //$scope.numprio++;
+      /* if ($scope.numprio == 0) {
+             $scope.numprio++;
+         }*\/
+
+      console.log($scope.ratingVal);
+    }
+
+
+    $scope.max = 4;
+    $scope.ratingVal = 0;
+    $scope.readonly = false;
+    $scope.onHover = function (val) {
+      $scope.hoverVal = val;
+    };
+    $scope.onLeave = function () {
+      $scope.hoverVal = null;
+    }
+    $scope.onChange = function (val) {
+      $scope.ratingVal = val;
+      console.log($scope.ratingVal);
+    }
+
+  */
+  //$scope.choiceid = angular.element(document).find('#MyAnswer'); 
+  //$scope.isanswer =0;
+
 });

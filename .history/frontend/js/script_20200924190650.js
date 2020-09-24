@@ -333,7 +333,23 @@ $scope.isLast= function() {
   
     $scope.userResult = result;
     console.log($scope.userResult);
-  
+  // return  $scope.userResult;
+  /*   for (let i = 0; i < lol.choice_id.length; i++) {
+      lol2.push({
+        'choice_id':lol[i],
+      });
+      console.log('lol2', lol2)
+      for (let j = 0; j < lol2[i].choice_id.length; j++) {
+        console.log(lol2.choice_id.length);
+        lol3.concat(lol2[j]);
+        var array = [lol3],
+        result = array.reduce((r, a) => a.map((b, i) => (r[i] || 0) + b), []);
+        console.log(result);
+      }
+    }
+    console.log(result); */
+    
+    /* $scope.showUserResult = function(){ */
     $scope.labels = ['E', 'A', 'W', 'F'];
     $scope.series = ['Series A', 'Series B'];
     $scope.dataresult = [$scope.userResult];
@@ -392,6 +408,33 @@ $scope.isLast= function() {
 
 
 
+
+
+/*    
+ $scope.getUserResult();
+    $scope.showUserResult = function(){
+    $scope.labels = ['E', 'A', 'W', 'F'];
+    $scope.series = ['Series A', 'Series B'];
+    $scope.dataresult = [$scope.userResult
+     // [31, 34, 16, 19]
+    ];
+  } */
+       
+
+ /*  $scope.collectData = function () {
+    $scope.len = $scope.answers;
+    let len = $scope.len;
+    for (let i = 0; i < len.length; i++) {
+      $scope.answers.push({
+        'user_id': len[i].user_id,
+        'question_id': len[i].question_id,
+        'choice_id': len[i].choice_id,
+        'request_type': 2,
+        'len': len
+      });
+    }
+    console.log('Hi', $scope.answers);
+  } */
 
 
   $scope.answers = [];
@@ -461,11 +504,118 @@ $scope.thenDone = function(){
       'choice_id': $scope.isanswer,
     })
     console.log($scope.runningData);
-   
+    /*  var data = [{
+        BuildingID: "56",
+        FloorId: "65",
+        volume: [{
+
+          one: 12,
+          two: 15,
+          three: 12
+        }]
+      }];
+
+      var MainInfo = [];
+      for (var i = 0; i < data.length; i++) {
+
+        var obj = {};
+        obj.BuildingID = data[i].BuildingID;
+        obj.FloorId = data[i].FloorId;
+
+        for (var j in data[i].volume[0]) {
+
+          obj[j] = data[i].volume[0][j];
+        }
+        MainInfo.push(obj);
+
+      }
+
+      console.log(MainInfo);
+
+*/
+
+
+
+    //  sessionStorage.setItem('quizItem', JSON.stringify($scope.runningData));
+    /* 
+        $scope.priorities = $scope.priorities.filter(function (item) {
+          $scope.item = item; */
+    // console.log('item', JSON.parse(JSON.stringify($scope.item)));
+
+
+    /*  let options = this.jsonDef.propSetMap.options;
+      for (let i = 0; i < options.length; i++) { // Add options dynamically from OS Element
+        this.options.push({
+          label: options[i].value,
+          value: options[i].name
+        });
+      }
+*/
+
+    /* for (let i = 0; i < $scope.questions.length; i++) {
+       
+       console.log('question', $scope.questions[selectedhead]);
+       let qh = $scope.questions[selectedhead];
+    
+       for (let j = 0; j < $scope.questions[i].options.length; j++) {
+       
+         let ans = qh.$scope.runningData.push(selectedhead);
+         sessionStorage.setItem('quizItem2', JSON.stringify(ans));
+         return !selectedhead || !angular.equals(item, selectedhead);
+       //  console.log('option', $scope.questions);
+       }
+     }*/
+    //$scope.runningData.push(selectedhead);
+    /*  sessionStorage.setItem('quizItem', JSON.stringify($scope.runningData));
+      return !selectedhead || !angular.equals(item, selectedhead);
+
+    });
+    console.log('priority', $scope.priorities);
+    if ($scope.priorities == "") { // this disables the <select> tag
+      $scope.emptyArr = true;
+    } */
+
+
+
+
+
+    /*
+	Output: Duplicate elements found.
+*/
 
   }
 
-  
+  /*
+    var data = [{ depth: 0, id: "f35vz2f" }, { depth: 0, id: "f359354" }, { depth: 1, id: "f35e0b0", parent_id: "f359354" }, { depth: 2, id: "f35ji24", parent_id: "f35e0b0" }, { depth: 2, id: "f35rnwb", parent_id: "" }, { depth: 2, id: "f35ojh4", parent_id: "f35e0b0" }, { depth: 3, id: "f35lmch", parent_id: "f35ji24" }, { depth: 3, id: "f35kl96", parent_id: "f35ji24" }],
+      tree = function (data, root) {
+          var t = {};
+          data.forEach(o => {
+              Object.assign(t[o.id] = t[o.id] || {}, o);
+              t[o.parent_id] = t[o.parent_id] || {};
+              t[o.parent_id].children = t[o.parent_id].children || [];
+              t[o.parent_id].children.push(t[o.id]);
+          });
+          return t[root].children;
+      }(data, undefined);
+
+  console.log(tree);
+
+
+  */
+/* 
+  $scope.turninAnswer = function (questionhead) {
+
+    var text = questionhead;
+    var integer = parseInt(text, 10);
+    // returns 42
+    //$scope.data = $scope.data.filter(function (ans) {
+    console.log('answer', integer);
+    //return selectedhead || angular.equals(ans, selectedhead);
+    // return !shead || !angular.equals(item, shead); 
+    //  });
+
+
+  } */
 
   $scope.index = 0;
   $scope.questions = $scope.data[$scope.index];
@@ -522,6 +672,15 @@ $scope.thenDone = function(){
     sessionStorage.setItem('quizItem', JSON.stringify($scope.runningQuestionData));
   }
 
+  /* 
+    var value = $scope.choices;
+    var blkstr = [];
+    $.each(value, function(idx2,val2) {                    
+      var str = idx2 + ":" + val2;
+      blkstr.push(str);
+    });
+    console.log(blkstr.join("")); */
+
 
 
   $scope.nodeQuestion = function (questionhead) {
@@ -545,7 +704,42 @@ $scope.thenDone = function(){
       console.log('parent', $scope.qParent);
     }
 
-   
+    /*
+
+    let data
+        var childArr = ['ft Some older versions read, ',
+        'fqa And we are writing these things to you so that your joy will be complete. ',
+        'fqb  ',
+        'f*'
+      ],
+      data = {
+        children: []
+      };
+    for (var j = 0; j < childArr.length; j++) {
+      let split = childArr[j].split(" ");
+      data.children.push({
+        marker: split[0],
+        value: split.slice(1, -1).join(" ")
+      });
+    }
+
+    console.log(data.children);*/
+    //  var data = [{ BuildingID: "56", FloorId: "65", volume: [{ one: 12, two: 15,   three: 12}] }]
+    /*var data =   $scope.runningQuestionData.push(questionhead);
+
+    var MainInfo=[];
+                for (i = 0; i < data.length; i++) {
+                    var obj = {}
+                    obj.qID = data[i].index;
+                    obj.opID = data[i].index;
+                    data[i].priority.forEach(function(a,c){
+                    Object.keys(data[i].volume[c]).forEach(function(a,b){
+                      obj[a] = Object.values(data[i].volume[c])[b]
+                    })
+                    })
+                    MainInfo.push(obj);
+                }
+                console.log(MainInfo)*/
   }
 
   $scope.nextQuestion = function (selectedhead) {
@@ -568,14 +762,36 @@ $scope.thenDone = function(){
 
     $scope.arrayQuestion($scope.questions.question);
     $scope.initQuestion();
-    
+    /* $scope.list = [{
+      label: "1st",
+      image: "face-a.png",
+      value: 4
+    }, {
+      label: "2nd",
+      image: "face-b.png",
+      value: 3
+    }, {
+      label: "3rd",
+      image: "face-c.png",
+      value: 2
+    }, {
+      label: "4th",
+      image: "face-d.png",
+      value: 1
+    }]; */
     selectedhead = $scope.qid;
     $scope.thisQ = JSON.parse(sessionStorage.getItem('quizItem'));
     console.log($scope.thisQ);
     $scope.runningQuestionData.push(selectedhead);
     sessionStorage.setItem('quizItem', JSON.stringify($scope.runningQuestionData));
     console.log($scope.thisQ + '-' + $scope.index);
-   
+    /*for (var i = 0; i < thisQ.length; i++) {
+      console.log(thisQ.$index+'-'+$scope.$index);
+     // if (thisQ.$index !== $scope.$index){
+        $scope.runningQuestionData.push(selectedhead);
+        sessionStorage.setItem('quizItem', JSON.stringify($scope.runningQuestionData));
+       // }
+    }*/
 
     $scope.emptyArr = false;
     //$scope.initData();
@@ -606,10 +822,52 @@ $scope.thenDone = function(){
     $scope.selValue = selectedColumn;
     questionId = $scope.QuestId;
     $scope.datavalue = $scope.data;
-  
+    /*  if($scope.selValue == null){
+        $scope.selValue = selectedColumn;
+      }*/
+    /* console.log('selected',$scope.selValue);
+
+     var obj = {
+       'priority': selectedColumn,
+       'questionid':questionId
+       
+     };*/
+
+    //  $scope.datavalue.push(obj);
     console.log('datavalue', $scope.datavalue);
 
   }
 
-  
+  /*
+
+    $scope.choiceUnique = function (val) {
+      // myValue = $scope.ratingVal;
+      $scope.ratingVal = val;
+      //$scope.numprio++;
+      /* if ($scope.numprio == 0) {
+             $scope.numprio++;
+         }*\/
+
+      console.log($scope.ratingVal);
+    }
+
+
+    $scope.max = 4;
+    $scope.ratingVal = 0;
+    $scope.readonly = false;
+    $scope.onHover = function (val) {
+      $scope.hoverVal = val;
+    };
+    $scope.onLeave = function () {
+      $scope.hoverVal = null;
+    }
+    $scope.onChange = function (val) {
+      $scope.ratingVal = val;
+      console.log($scope.ratingVal);
+    }
+
+  */
+  //$scope.choiceid = angular.element(document).find('#MyAnswer'); 
+  //$scope.isanswer =0;
+
 });

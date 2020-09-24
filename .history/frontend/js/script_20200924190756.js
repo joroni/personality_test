@@ -568,14 +568,36 @@ $scope.thenDone = function(){
 
     $scope.arrayQuestion($scope.questions.question);
     $scope.initQuestion();
-    
+    /* $scope.list = [{
+      label: "1st",
+      image: "face-a.png",
+      value: 4
+    }, {
+      label: "2nd",
+      image: "face-b.png",
+      value: 3
+    }, {
+      label: "3rd",
+      image: "face-c.png",
+      value: 2
+    }, {
+      label: "4th",
+      image: "face-d.png",
+      value: 1
+    }]; */
     selectedhead = $scope.qid;
     $scope.thisQ = JSON.parse(sessionStorage.getItem('quizItem'));
     console.log($scope.thisQ);
     $scope.runningQuestionData.push(selectedhead);
     sessionStorage.setItem('quizItem', JSON.stringify($scope.runningQuestionData));
     console.log($scope.thisQ + '-' + $scope.index);
-   
+    /*for (var i = 0; i < thisQ.length; i++) {
+      console.log(thisQ.$index+'-'+$scope.$index);
+     // if (thisQ.$index !== $scope.$index){
+        $scope.runningQuestionData.push(selectedhead);
+        sessionStorage.setItem('quizItem', JSON.stringify($scope.runningQuestionData));
+       // }
+    }*/
 
     $scope.emptyArr = false;
     //$scope.initData();
@@ -606,10 +628,52 @@ $scope.thenDone = function(){
     $scope.selValue = selectedColumn;
     questionId = $scope.QuestId;
     $scope.datavalue = $scope.data;
-  
+    /*  if($scope.selValue == null){
+        $scope.selValue = selectedColumn;
+      }*/
+    /* console.log('selected',$scope.selValue);
+
+     var obj = {
+       'priority': selectedColumn,
+       'questionid':questionId
+       
+     };*/
+
+    //  $scope.datavalue.push(obj);
     console.log('datavalue', $scope.datavalue);
 
   }
 
-  
+  /*
+
+    $scope.choiceUnique = function (val) {
+      // myValue = $scope.ratingVal;
+      $scope.ratingVal = val;
+      //$scope.numprio++;
+      /* if ($scope.numprio == 0) {
+             $scope.numprio++;
+         }*\/
+
+      console.log($scope.ratingVal);
+    }
+
+
+    $scope.max = 4;
+    $scope.ratingVal = 0;
+    $scope.readonly = false;
+    $scope.onHover = function (val) {
+      $scope.hoverVal = val;
+    };
+    $scope.onLeave = function () {
+      $scope.hoverVal = null;
+    }
+    $scope.onChange = function (val) {
+      $scope.ratingVal = val;
+      console.log($scope.ratingVal);
+    }
+
+  */
+  //$scope.choiceid = angular.element(document).find('#MyAnswer'); 
+  //$scope.isanswer =0;
+
 });
