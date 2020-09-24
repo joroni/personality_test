@@ -1,0 +1,75 @@
+<html ng-app="problemApp">
+<head>
+    <title>Example</title>
+
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <link href="http://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+<script>
+
+    var myApp = angular.module("problemApp", []);
+
+    myApp.controller("RESTCall", function ($scope, $compile, $element) {
+
+        $scope.callGetRow = function(line) {
+            alert(line);
+        };
+
+        $scope.callAddNew = function() {
+
+            //define the element 
+            $scope.content = "<tr ng-click=\"callGetRow('2/0')\" id=\"2.0\"><td>2.0</td><td>Item 2</td><td>Generic Description 2</td><td>1</td><td>200</td></tr>";
+
+            //wrap it in jqLite
+            var tblElem = angular.element($scope.content);
+
+            //create a function to generate content
+            var compileFn = $compile(tblElem);
+
+            //execute the compilation function
+            compileFn($scope);
+
+            // add to DOM
+            $( ".toappend" ).append(tblElem);
+        };      
+
+    });
+
+    $(document).ready( function() {
+      $('#example').dataTable();
+    } );
+
+</script>       
+</head>
+
+<body>
+
+<div ng-controller="RESTCall">
+    <table class="compact" id="example">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Item</th>
+                <th>Description</th>
+                <th>Qty</th>
+                <th>List $</th>
+            </tr>
+        </thead>
+
+        <tbody class="toappend">
+            <tr ng-click="callGetRow('1/0')" id="1.0">
+                <td>1.0</td>
+                <td>Item 1</td>
+                <td>Generic Description</td>
+                <td>3</td>
+                <td>100</td>
+            </tr>
+        </tbody>
+    </table>
+
+<button class="btn" type="button" ng-click="callAddNew()">Add new</button>
+</div>
+</body>
+</html>

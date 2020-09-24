@@ -33,46 +33,16 @@ if($request_type == 2){
     $data = array();
     if($result->num_rows > 0){
        while($row = $result->fetch_assoc()) {
-            $data[] = array("user_id"=>$row['user_id'],"user_earth"=>$row['user_earth'],"user_air"=>$row['user_air'],"user_water"=>$row['user_water'], "user_fire"=>$row['user_fire'],"group_id"=>$row['group_id'],"first_name"=>$row['first_name'],
-            "last_name"=>$row['last_name'],"email"=>$row['email'],"created"=>$row['created']); 
+            $data[] = array("user_id"=>$row['user_id'],"user_earth"=>$row['user_earth'],"user_air"=>$row['user_air'],"user_water"=>$row['user_water'], "user_fire"=>$row['user_fire'],"group_id"=>$row['group_id']); 
         }
     }
     
     $stmt->close();
     echo json_encode($data);
     exit;
-}
-
-
-if($request_type == 3){
-    $stmt = $con->prepare("SELECT * FROM tbl_customer ORDER BY CustomerID DESC");
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $data = array();
-    if($result->num_rows > 0){
-       while($row = $result->fetch_assoc()) {
-        $data[] = $row;
-        }
-    }
-    
-    $stmt->close();
-    echo json_encode($data);
-    exit;
-/* $query = "SELECT * FROM tbl_customer ORDER BY CustomerID DESC";
-
-$statement = $connect->prepare($query);
-
-$statement->execute();
-
-while($row = $statement->fetch(PDO::FETCH_ASSOC))
-{
-	$data[] = $row;
-}
-
-echo json_encode($data); */
 }
 // Insert record
-if($request_type == 4){
+if($request_type == 3){
     $user_id = $data->user_id;
     $question_id = $data->question_id;
     $choice_id = $data->choice_id;

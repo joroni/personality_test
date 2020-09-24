@@ -75,7 +75,7 @@ app.controller("quizAdmin", function ($scope, $http) {
           $scope.userdata[i].user_earth,
           $scope.userdata[i].user_air,
           $scope.userdata[i].user_water,
-          $scope.userdata[i].user_fire
+          $scope.userdata[i].user_fire,
         ]);
       }
       console.log($scope.data );

@@ -71,12 +71,12 @@ app.controller("quizAdmin", function ($scope, $http) {
       $scope.data = [];
       for (var i = 0; i < $scope.userdata.length; i++) {
       
-        $scope.data.push([
+        $scope.data.push(
           $scope.userdata[i].user_earth,
           $scope.userdata[i].user_air,
           $scope.userdata[i].user_water,
-          $scope.userdata[i].user_fire
-        ]);
+          $scope.userdata[i].user_fire,
+        );
       }
       console.log($scope.data );
       $scope.onClick = function (points, evt) {

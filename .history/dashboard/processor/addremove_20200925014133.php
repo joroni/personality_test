@@ -42,37 +42,8 @@ if($request_type == 2){
     echo json_encode($data);
     exit;
 }
-
-
-if($request_type == 3){
-    $stmt = $con->prepare("SELECT * FROM tbl_customer ORDER BY CustomerID DESC");
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $data = array();
-    if($result->num_rows > 0){
-       while($row = $result->fetch_assoc()) {
-        $data[] = $row;
-        }
-    }
-    
-    $stmt->close();
-    echo json_encode($data);
-    exit;
-/* $query = "SELECT * FROM tbl_customer ORDER BY CustomerID DESC";
-
-$statement = $connect->prepare($query);
-
-$statement->execute();
-
-while($row = $statement->fetch(PDO::FETCH_ASSOC))
-{
-	$data[] = $row;
-}
-
-echo json_encode($data); */
-}
 // Insert record
-if($request_type == 4){
+if($request_type == 3){
     $user_id = $data->user_id;
     $question_id = $data->question_id;
     $choice_id = $data->choice_id;

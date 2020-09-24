@@ -59,26 +59,13 @@ app.controller("quizAdmin", function ($scope, $http) {
       
       $scope.labels = ["Earth", "Air", "Water", "Fire"];
       //$scope.series = ['Susan', 'Joroni', 'Jane'];
-      $scope.series = [];
-      for (var i = 0; i < $scope.userdata.length; i++) {
-      
-        $scope.series.push(
-          $scope.userdata[i].first_name,
-        );
-      }
+      $scope.series = [$scope.userdata.first_name];
       console.log($scope.series );
-
-      $scope.data = [];
-      for (var i = 0; i < $scope.userdata.length; i++) {
-      
-        $scope.data.push([
-          $scope.userdata[i].user_earth,
-          $scope.userdata[i].user_air,
-          $scope.userdata[i].user_water,
-          $scope.userdata[i].user_fire
-        ]);
-      }
-      console.log($scope.data );
+      $scope.data = [
+        [65, 15, 5, 15],
+        [10, 30, 41, 19],
+        [25, 20, 20, 35]
+      ];
       $scope.onClick = function (points, evt) {
         console.log(points, evt);
       };

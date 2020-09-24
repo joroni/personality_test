@@ -5,7 +5,7 @@ app.controller("quizAdmin", function ($scope, $http) {
 
 
 
-  $scope.getIndividualUser = function () {
+  $scope.getIndiviualUser = function () {
     //console.log('hi');
 
     $scope.labels = ["Earth", "Air", "Water", "Fire"];
@@ -55,55 +55,11 @@ app.controller("quizAdmin", function ($scope, $http) {
       let usersData = response.data;
       console.log(usersData);
      // $scope.allUsers = usersData;
-      $scope.userdata = usersData;
-      
-      $scope.labels = ["Earth", "Air", "Water", "Fire"];
-      //$scope.series = ['Susan', 'Joroni', 'Jane'];
-      $scope.series = [];
-      for (var i = 0; i < $scope.userdata.length; i++) {
-      
-        $scope.series.push(
-          $scope.userdata[i].first_name,
-        );
-      }
-      console.log($scope.series );
-
-      $scope.data = [];
-      for (var i = 0; i < $scope.userdata.length; i++) {
-      
-        $scope.data.push([
-          $scope.userdata[i].user_earth,
-          $scope.userdata[i].user_air,
-          $scope.userdata[i].user_water,
-          $scope.userdata[i].user_fire
-        ]);
-      }
-      console.log($scope.data );
-      $scope.onClick = function (points, evt) {
-        console.log(points, evt);
-      };
-      $scope.datasetOverride = [{
-        yAxisID: 'y-axis-1'
-      }, {
-        yAxisID: 'y-axis-2'
-      }];
-      $scope.options = {
-        scales: {
-          yAxes: [{
-              id: 'y-axis-1',
-              type: 'linear',
-              display: true,
-              position: 'left'
-            },
-            {
-              id: 'y-axis-2',
-              type: 'linear',
-              display: true,
-              position: 'right'
-            }
-          ]
-        }
-      };
+      $scope.customers = usersData;
+      //return $scope.allUsers;
+      // $scope.data = questionData;
+      //console.log($scope.data);
+      //return questionData;
     });
   }
 
