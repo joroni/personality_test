@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+  <head>
+    <title>UI Router Nav Demo</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css" />
+    <!-- <link data-require="bootstrap-css@3.1.1" data-semver="3.1.1" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <link data-require="fontawesome@*" data-semver="4.1.0" rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" />
+ -->  
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Scripts -->
+    <script  src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="lib/angularjs/1.2.4/angular.min.js"></script>
+    <script src="lib/angularjs/angular-ui-router.js"></script>
+    <!-- App Scripts -->
+    
+    <script src="app.js"></script>
+    
+  </head>
+
+  <body>
+    <!-- Top Nav -->
+    <nav class="navbar navbar-inverse">
+      <div class="navbar-brand" ui-sref="home">ui-router sidebar demo</div>
+      <ul class="nav navbar-nav">
+        <li>
+          <a ui-sref="home">Home</a>
+        </li>
+        <li>
+          <a ui-sref="products.intro">Products</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- Content -->
+    <div >
+      <div ui-view></div>
+    </div>
+    
+  </body> 
+</html>

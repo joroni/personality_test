@@ -1,0 +1,180 @@
+<html ng-app="problemApp">
+<head>
+    <title>Example</title>
+
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- <script src="http://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.min.js"></script>
+    <script src="https://unpkg.com/ng-table/bundles/ng-table.min.js"></script>
+    
+
+    
+    <link href="http://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+
+<script>
+    (function() {
+        "use strict";
+      
+        var app = angular.module("myApp", ["ngTable", "ngTableDemos"]);
+      
+        app.controller("demoController", demoController);
+      
+        demoController.$inject = ["NgTableParams", "ngTableGroupedList"];
+      
+        function demoController(NgTableParams, simpleList) {
+          this.tableParams = new NgTableParams({
+            // initial grouping
+            group: "country"
+          }, {
+            dataset: simpleList
+          });
+        }
+      
+        app.controller("dynamicDemoController", dynamicDemoController);
+      
+        dynamicDemoController.$inject = ["NgTableParams", "ngTableGroupedList"];
+      
+        function dynamicDemoController(NgTableParams, simpleList) {
+          this.cols = [{
+            field: "country",
+            title: "Country",
+            sortable: "country",
+            show: false,
+            groupable: "country"
+          }, {
+            field: "name",
+            title: "Name",
+            sortable: "name",
+            show: true,
+            groupable: "name"
+          }, {
+            field: "age",
+            title: "Age",
+            sortable: "age",
+            show: true,
+            groupable: "age"
+          }, {
+            field: "money",
+            title: "Money",
+            sortable: "money",
+            show: true
+          }];
+      
+          this.tableParams = new NgTableParams({
+            // initial grouping
+            group: {
+              country: "desc"
+            }
+          }, {
+            dataset: simpleList,
+            groupOptions: {
+              isExpanded: false
+            }
+          });
+        }
+      })();
+      
+      (function() {
+        "use strict";
+      
+        angular.module("myApp").run(configureDefaults);
+        configureDefaults.$inject = ["ngTableDefaults"];
+      
+        function configureDefaults(ngTableDefaults) {
+          ngTableDefaults.params.count = 5;
+          ngTableDefaults.settings.counts = [];
+        }
+      })();
+</script>
+</head>
+<body>
+
+<div ng-app="myApp" class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 class="page-header">Grouping - basic example</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="bs-callout bs-callout-info">
+              <h4>Overview</h4>
+              <p><code>ngTable</code> provides a header template that adds grouping to a html table. To configure a table for groups:</p>
+              <ul>
+                <li>Markup your html table as per the example below</li>
+                <li>Specify which column should be groupable
+                  <ul>
+                    <li><code>ngTable</code> - specify this in the html markup</li>
+                    <li><code>ngTableDynamic</code> - specify this in the JS column definitions</li>
+                  </ul>
+                </li>
+                <li>Supply the initial column to group on to the <code>NgTableParams</code> constructor call</li>
+                <li>Optionally supply <code>groupOptions</code> as a setting value to the <code>NgTableParams</code></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="bs-callout bs-callout-warning">
+              <h4>Got a <code>getData</code> function?</h4>
+              <p>In this case be aware that paging of data will be applied <em>after</em> the call to your <code>getData</code> function. This might be a problem where your <code>getData</code> returns large number of records.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6" ng-controller="demoController as demo">
+        <h3>ngTable directive</h3>
+        <table ng-table="demo.tableParams" class="table table-condensed table-bordered table-hover">
+          <colgroup>
+            <col width="60%" />
+            <col width="20%" />
+            <col width="20%" />
+          </colgroup>
+          <tr class="ng-table-group" ng-repeat-start="group in $groups">
+            <td colspan="3">
+              <a href="" ng-click="group.$hideRows = !group.$hideRows">
+                <span class="glyphicon" ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
+                <strong>{{ group.value }}</strong>
+              </a>
+            </td>
+          </tr>
+          <tr ng-hide="group.$hideRows" ng-repeat="user in group.data" ng-repeat-end>
+            <td sortable="'country'" data-title="'Country'" groupable="'country'" ng-if="false">
+              {{user.country}}
+            </td>
+            <td sortable="'name'" data-title="'Name'" groupable="'name'">
+              {{user.name}}
+            </td>
+            <td sortable="'age'" data-title="'Age'" groupable="'age'">
+              {{user.age}}
+            </td>
+            <td sortable="'money'" data-title="'Money'">
+              {{user.money}}
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-6" ng-controller="dynamicDemoController as demo">
+        <h3>ngTableDynamic directive</h3>
+        <table ng-table-dynamic="demo.tableParams with demo.cols" class="table table-condensed table-bordered table-hover">
+          <colgroup>
+            <col width="60%" />
+            <col width="20%" />
+            <col width="20%" />
+          </colgroup>
+          <tr class="ng-table-group" ng-repeat-start="group in $groups">
+            <td colspan="3">
+              <a href="" ng-click="group.$hideRows = !group.$hideRows">
+                <span class="glyphicon" ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
+                <strong>{{ group.value }}</strong>
+              </a>
+            </td>
+          </tr>
+          <tr ng-hide="group.$hideRows" ng-repeat="user in group.data" ng-repeat-end>
+            <td ng-repeat="col in $columns">{{user[col.field]}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>

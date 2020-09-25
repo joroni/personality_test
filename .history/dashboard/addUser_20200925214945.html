@@ -1,0 +1,47 @@
+<form>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="user_name">User Name:(optional)</label>
+            <input type="text" class="form-control" name="user_name" ng-model="user_name">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="email" ng-model="email">
+
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="first_name">First Name</label>
+            <input type="text" class="form-control" name="first_name" ng-model="first_name">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="last_name">Last Name</label>
+            <input type="text" class="form-control" name="last_name" ng-model="last_name">
+
+        </div>
+    </div>
+
+    <div class="form-row">
+
+        <div class="form-group col-md-3">
+            <label for="group_id">Group:</label>
+            <select class="form-control" name="group_id" ng-model="group_id">
+                <option ng-value="1">Team A</option>
+                <option ng-value="2">Team B</option>
+            </select>
+
+        </div>
+        <div class="form-group col-md-3">
+            <label for="acl">Access Permission:</label>
+            <select class="form-control" name="acl" ng-model="acl">
+                <option ng-value="2" selected>Tester</option>
+                <option ng-value="1">Admin/Tester</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group col-md-6">
+        <button class="btn btn-default btn-primary" ng-click="addUser()">Add User</button>
+    </div>
+
+</form>
